@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 
 app.get('/', function (req, res) {
-    res.json({
-        message: "Hello World"
+    // res.status(200).json({message: "Hello World"});
+    res.status(500).json({
+        message: "Error"
     });
 });
 
@@ -21,6 +22,34 @@ app.post('/login', function (req, res) {
 
 app.delete('/acc-dele', function (req, res) {
     res.send("Delete Successfully");
+});
+
+app.get('/random.text', function (req, res) {
+    res.send('random.text')
+});
+
+app.get('/ab?cd', function (req, res) {
+    res.send('ab?cd')
+});
+
+app.get('/ab+cd', function (req, res) {
+    res.send('ab+cd')
+});
+
+app.get('/ab*cd', function (req, res) {
+    res.send('ab*cd')
+});
+
+app.get('/ab(cd)?e', function (req, res) {
+    res.send('ab(cd)?e')
+});
+
+app.get('/user/:id/stats/:status_id', function (req, res) {
+    res.send(req.params);
+});
+
+app.get('/flights/:from-:to', function (req, res) {
+    res.send(req.params);
 });
 
 port = process.env.PORT || 3000;
